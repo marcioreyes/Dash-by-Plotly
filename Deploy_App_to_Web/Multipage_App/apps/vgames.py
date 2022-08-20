@@ -10,12 +10,12 @@ from app import app
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 
-dfv = pd.read_csv(DATA_PATH.joinpath("vgsales.csv"))  # GregorySmith Kaggle
-sales_list = ["North American Sales", "EU Sales", "Japan Sales", "Other Sales",	"World Sales"]
+dfv = pd.read_csv(DATA_PATH.joinpath("alarmes.csv"))  # GregorySmith Kaggle
+lista_col = ["ID", "Alarme", "Tipo", "Descrição", "Data", "Horário", "Atendente", "Horário Atendimento"]
 
 
 layout = html.Div([
-    html.H1('Video Games Sales', style={"textAlign": "center"}),
+    html.H1('SAMA - Alarmes', style={"textAlign": "center"}),
 
     html.Div([
         html.Div(dcc.Dropdown(
@@ -26,7 +26,7 @@ layout = html.Div([
         html.Div(dcc.Dropdown(
             id='sales-dropdown', value='EU Sales', clearable=False,
             persistence=True, persistence_type='memory',
-            options=[{'label': x, 'value': x} for x in sales_list]
+            options=[{'label': x, 'value': x} for x in lista_col]
         ), className='six columns'),
     ], className='row'),
 
